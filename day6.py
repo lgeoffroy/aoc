@@ -1,9 +1,5 @@
 from utils import get_level_input
 
-input = get_level_input(6)
-lines = input.splitlines()
-lines.append('')
-
 def nb_yes_for(lines):
     answers = []
     for line in lines:
@@ -20,6 +16,9 @@ def nb_all_yes_for(lines):
     return len(answers)
 
 def solve():
+    input = get_level_input(6)
+    lines = input.splitlines()
+    lines.append('')
     nb_yes = 0
     nb_all_yes = 0
     buffer = []

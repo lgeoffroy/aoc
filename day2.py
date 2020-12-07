@@ -8,7 +8,7 @@ def solve():
     valid2 = 0
 
     for line in lines:
-        match = re.match('^(\d+)-(\d+) (\w): (\w+)$', line)
+        match = re.match(r'^(\d+)-(\d+) (\w): (\w+)$', line)
         (n, m, l, passwd) = match.groups()
         count = passwd.count(l)
         if count >= int(n) and count <= int(m):

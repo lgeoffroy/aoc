@@ -8,9 +8,7 @@ def get_id(seat):
         replace('L', '0')
     return int(binary_seat, 2)
 
-input = get_level_input(5)
-
-def solve1():
+def solve1(input):
     highest = ('FFFFFLLL', 0)
     for seat in input.splitlines():
         id = get_id(seat)
@@ -18,7 +16,7 @@ def solve1():
             highest = (seat, id)
     return highest[1]
 
-def solve2(max):
+def solve2(input, max):
     all_seats = []
     for seat in input.splitlines():
         all_seats.append(get_id(seat))
@@ -27,5 +25,6 @@ def solve2(max):
             return i
 
 def solve():
-    max = solve1()
-    return (max, solve2(max))
+    input = get_level_input(5)
+    max = solve1(input)
+    return (max, solve2(input, max))

@@ -11,7 +11,7 @@ def data_valid(field, string):
     if field == 'eyr':
         return 2020 <= int(val) <= 2030
     if field == 'hgt':
-        h_match = re.match('(\d+)(in|cm)', val)
+        h_match = re.match(r'(\d+)(in|cm)', val)
         if h_match is not None:
             groups = h_match.groups()
             if (groups[1] == 'in'):
@@ -19,11 +19,11 @@ def data_valid(field, string):
             if (groups[1] == 'cm'):
                 return 150 <= int(groups[0]) <= 193
     if field == 'hcl':
-        return re.search('^#[a-f\d]{6}$', val) is not None
+        return re.search(r'^#[a-f\d]{6}$', val) is not None
     if field == 'ecl':
-        return re.search('^(amb|blu|brn|gry|grn|hzl|oth)$', val) is not None
+        return re.search(r'^(amb|blu|brn|gry|grn|hzl|oth)$', val) is not None
     if field == 'pid':
-        return re.search('^\d{9}$', val) is not None
+        return re.search(r'^\d{9}$', val) is not None
     return False
 
 def is_valid(strings, validate_data):
