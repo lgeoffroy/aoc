@@ -1,8 +1,4 @@
-from utils import get_level_input
-
-def solve():
-    input = get_level_input(3)
-    lines = input.splitlines()
+def solve(lines):
     product = 1
 
     for slope in [(1, 1), (5, 1), (7, 1), (1, 2), (3, 1)]:

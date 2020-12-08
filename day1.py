@@ -1,8 +1,5 @@
-from utils import get_level_input
-
-def solve():
-    input = get_level_input(1)
-    liste = [int(x) for x in input.splitlines()]
+def solve(lines):
+    liste = [int(x) for x in lines]
 
     for i in liste:
         for j in liste:

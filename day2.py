@@ -1,9 +1,6 @@
 import re
-from utils import get_level_input
 
-def solve():
-    input = get_level_input(2)
-    lines = input.splitlines()
+def solve(lines):
     valid1 = 0
     valid2 = 0
 

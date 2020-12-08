@@ -1,5 +1,4 @@
 import re
-from utils import get_level_input
 
 def data_valid(field, string):
     match = re.match('^.*' + field + ':(.*?)( |$)', string)
@@ -38,10 +37,8 @@ def is_valid(strings, validate_data):
             return 0
     return 1
 
-def count_valids(input, validate_data):
+def count_valids(lines, validate_data):
     buffer = []
-    lines = input.splitlines()
-    lines.append('')
     nb_valid = 0
     for line in lines:
         if line == '':
@@ -51,7 +48,7 @@ def count_valids(input, validate_data):
             buffer.append(line)
     return nb_valid
 
-def solve():
-    input = get_level_input(4)
-    return (count_valids(input, validate_data=False),
-            count_valids(input, validate_data=True))
+def solve(lines):
+    lines.append('')
+    return (count_valids(lines, validate_data=False),
+            count_valids(lines, validate_data=True))

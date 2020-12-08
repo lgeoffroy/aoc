@@ -1,9 +1,6 @@
 import regex
-from utils import get_level_input
 
-def solve():
-    input = get_level_input(7)
-    rules = input.splitlines()
+def solve(rules):
     valid_colors = []
 
     def add_color_from_rule(rule):
