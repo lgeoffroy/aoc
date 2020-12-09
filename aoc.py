@@ -1,9 +1,11 @@
 #!/usr/bin/python3.5
 
+import datetime
 from dotenv import load_dotenv
 import os
 import requests
 import sys
+import timeit
 
 from day1 import solve as solve_day1
 from day2 import solve as solve_day2
@@ -13,6 +15,7 @@ from day5 import solve as solve_day5
 from day6 import solve as solve_day6
 from day7 import solve as solve_day7
 from day8 import solve as solve_day8
+from day9 import solve as solve_day9
 
 
 load_dotenv()
@@ -32,13 +35,17 @@ if __name__ == '__main__':
         levels = sys.argv[1:]
     except:
         levels = []
-    if len(levels) == 0 or not all([level in '12345678' for level in levels]):
+    if len(levels) == 0 or not all([level in '123456789' for level in levels]):
         print('Usage: ' + sys.argv[0] + ' LEVEL [OTHER_LEVEL]...')
         print('Example: ' + sys.argv[0] + ' 1 3 4')
         exit(1)
     for level in levels:
         input = get_level_input(level)
-        buffer = input.splitlines()
-        results = globals()['solve_day' + level](buffer)
-        print('Level ' + level + ': ', end='')
-        print(results)
+        lines = input.splitlines()
+        def resolve():
+            results = globals()['solve_day' + level](lines)
+            print('Level ' + level + ': ', end='')
+            print(results)
+        t = timeit.Timer(lambda: resolve())
+        ts = t.timeit(1)
+        print('    Exec time: ' + str(round(ts * 1000, 3)) + 'ms')

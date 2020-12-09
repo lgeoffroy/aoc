@@ -1,11 +1,11 @@
 
 import regex
 
-def solve(buffer):
-    return (part1(buffer), part2(buffer))
+def solve(lines):
+    return (part1(lines), part2(lines))
 
-def part1(buffer, only_valid=False):
-    instructions = buffer[:]
+def part1(lines, only_valid=False):
+    instructions = lines[:]
     i = 0
     acc = 0
     while True:
@@ -23,8 +23,8 @@ def part1(buffer, only_valid=False):
         if i == len(instructions):
             return acc
 
-def part2(buffer):
-    instructions = buffer[:]
+def part2(lines):
+    instructions = lines[:]
     i = 0
     acc = 0
     visited = []
@@ -40,7 +40,7 @@ def part2(buffer):
         elif op == 'loop':
             break
     for i in visited:
-        new_instructions = buffer[:]
+        new_instructions = lines[:]
         (op, val) = regex.match(r'^(\w+) ([+-]\d+)$', instructions[i]).groups()
         new_instructions[i] = 'nop +0' if op == 'jmp' or val == '+0' else 'jmp ' + val
         res = part1(new_instructions, only_valid=True)
