@@ -30,6 +30,19 @@ def get_level_input(level):
     return requests.get('https://adventofcode.com/2020/day/' + str(level) + '/input', headers=headers).text
 
 
+def get_input(level):
+    filename = 'input/day' + level + '.txt'
+    if os.path.exists(filename):
+        f = open(filename, 'r')
+        input = f.read()
+        f.close()
+        return input
+    input = get_level_input(level)
+    f = open(filename, 'w')
+    f.write(input)
+    f.close()
+    return input
+
 if __name__ == '__main__':
     try:
         levels = sys.argv[1:]
@@ -40,8 +53,7 @@ if __name__ == '__main__':
         print('Example: ' + sys.argv[0] + ' 1 3 4')
         exit(1)
     for level in levels:
-        input = get_level_input(level)
-        lines = input.splitlines()
+        lines = get_input(level).splitlines()
         def resolve():
             results = globals()['solve_day' + level](lines)
             print('Level ' + level + ': ', end='')
