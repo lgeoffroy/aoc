@@ -16,6 +16,7 @@ from day6 import solve as solve_day6
 from day7 import solve as solve_day7
 from day8 import solve as solve_day8
 from day9 import solve as solve_day9
+from day10 import solve as solve_day10
 
 
 load_dotenv()
@@ -48,7 +49,7 @@ if __name__ == '__main__':
         levels = sys.argv[1:]
     except:
         levels = []
-    if len(levels) == 0 or not all([level in '123456789' for level in levels]):
+    if len(levels) == 0 or not all([int(level) in range(1, 11) for level in levels]):
         print('Usage: ' + sys.argv[0] + ' LEVEL [OTHER_LEVEL]...')
         print('Example: ' + sys.argv[0] + ' 1 3 4')
         exit(1)
