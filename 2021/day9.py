@@ -1,5 +1,6 @@
 from functools import reduce
 
+
 def solve(lines):
     low_points = get_low_points(lines)
 
