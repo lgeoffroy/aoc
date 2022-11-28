@@ -54,7 +54,7 @@ def play_dirac(players):
                     new_pos = (pos + dice_score) % 10
                     new_score = score + new_pos + 1
                     new_situation = (new_pos, new_score)
-                    if new_score >= 21:
+                    if new_score >= 100:
                         if n not in winning[player]:
                             winning[player][n] = 0
                         winning[player][n] += nb * occurences * sum(outcomes[player^1].values())
