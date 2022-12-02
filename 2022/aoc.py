@@ -8,6 +8,7 @@ import sys
 import timeit
 
 from day1 import solve as solve_day1
+from day2 import solve as solve_day2
 
 
 load_dotenv()
