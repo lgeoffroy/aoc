@@ -11,6 +11,7 @@ from day1 import solve as solve_day1
 from day2 import solve as solve_day2
 from day3 import solve as solve_day3
 from day4 import solve as solve_day4
+from day5 import solve as solve_day5
 
 
 load_dotenv()
@@ -89,6 +90,6 @@ if __name__ == "__main__":
         except NotAvailableException:
             print(f"* level {level} doesn't exist yet!")
             sys.exit(1)
-        except NotImplementedError:
+        except KeyError:
             print(f"* level {level} not implemented.")
             sys.exit(1)
