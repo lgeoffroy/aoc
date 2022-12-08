@@ -14,6 +14,7 @@ from day4 import solve as solve_day4
 from day5 import solve as solve_day5
 from day6 import solve as solve_day6
 from day7 import solve as solve_day7
+from day8 import solve as solve_day8
 
 
 load_dotenv()
