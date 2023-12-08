@@ -1,17 +1,10 @@
-def reduce_line(line):
+def lvl1(line):
     digits = [x for x in line if x in "0123456789"]
-    try:
-        return int(f"{digits[0]}{digits[-1]}")
-    except ValueError:
-        print(line)
-        raise
-    except IndexError:
-        print(line)
-        raise
+    return int(f"{digits[0]}{digits[-1]}")
 
 
-def reduce_line_corrected(line):
-    new_line = ""
+def lvl2(line):
+    d1, d2 = None, None
     numbers = {
         "one": "1",
         "two": "2",
@@ -23,23 +16,24 @@ def reduce_line_corrected(line):
         "eight": "8",
         "nine": "9",
     }
-    i = 0
-    while i < len(line):
-        copy = True
+    for i, x in enumerate(line):
+        if x in "0123456789":
+            d1 = x
         for number in numbers:
-            if copy and line[i:].startswith(number):
-                new_line += numbers[number]
-                i += len(number)
-                copy = False
-                break
-        if copy:
-            new_line += line[i]
-            i += 1
-    print(new_line)
-    return reduce_line(new_line)
+            if d1 is None and line[i:].startswith(number):
+                d1 = numbers[number]
+        if d1 is not None:
+            break
+    for i, x in enumerate(reversed(line)):
+        if x in "0123456789":
+            d2 = x
+        for number in numbers:
+            if d2 is None and line[len(line) - i - 1 :].startswith(number):
+                d2 = numbers[number]
+        if d2 is not None:
+            break
+    return int(f"{d1}{d2}")
 
 
 def solve(lines):
-    return sum([reduce_line(line) for line in lines]), sum(
-        [reduce_line_corrected(line) for line in lines]
-    )
+    return sum([lvl1(line) for line in lines]), sum([lvl2(line) for line in lines])
